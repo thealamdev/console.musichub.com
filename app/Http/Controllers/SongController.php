@@ -7,15 +7,22 @@ use App\Models\Song;
 use Illuminate\Http\Request;
 use App\Http\Services\SongServices;
 use App\Http\Requests\StoreSongRequest;
+use App\Http\Resources\SongResource;
+use Illuminate\Http\JsonResponse;
 
 class SongController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(SongServices $service): JsonResponse
     {
-        //
+        try {
+            $res = SongResource::collection(resource: $service->getSongs());
+            return ApiResponse::success(data: $res, message: 'Songs retrieved successfully');
+        } catch (\Exception $e) {
+            return ApiResponse::error(message: $e->getMessage(), code: $e->getCode());
+        }
     }
 
     /**
