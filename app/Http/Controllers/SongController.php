@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Song;
 use Illuminate\Http\Request;
+use App\Http\Services\SongServices;
+use App\Http\Requests\StoreSongRequest;
 
 class SongController extends Controller
 {
@@ -26,9 +28,14 @@ class SongController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreSongRequest $request, SongServices $service)
     {
-        dd($request->all());
+        $request->validated();
+        $res = $service->storeSong(data: $request->sanitizedValues());
+        return response()->json(data: [
+            'message' => 'Song created successfully',
+            'data' => $res
+        ], status: 201);
     }
 
     /**
