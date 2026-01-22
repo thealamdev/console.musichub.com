@@ -18,7 +18,7 @@ class SongController extends Controller
     public function index(SongServices $service): JsonResponse
     {
         try {
-            $res = SongResource::collectiond(resource: $service->getSongs());
+            $res = SongResource::collection(resource: $service->getSongs());
             return ApiResponse::success(data: $res, message: 'Songs retrieved successfully');
         } catch (\Exception $e) {
             return ApiResponse::error(message: $e->getMessage(), code: $e->getCode(), errors: $e);
