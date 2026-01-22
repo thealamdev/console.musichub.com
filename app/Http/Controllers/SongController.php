@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\ApiResponse;
 use App\Models\Song;
 use Illuminate\Http\Request;
 use App\Http\Services\SongServices;
@@ -32,10 +33,9 @@ class SongController extends Controller
     {
         $request->validated();
         $res = $service->storeSong(data: $request->sanitizedValues());
-        return response()->json(data: [
-            'message' => 'Song created successfully',
-            'data' => $res
-        ], status: 201);
+        return $res ? ApiResponse::success(message: 'Song created successfully')
+            : ApiResponse::error(message: 'Failed to create song');
+        // dd($res);
     }
 
     /**
