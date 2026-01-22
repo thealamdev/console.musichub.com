@@ -31,11 +31,12 @@ class SongController extends Controller
      */
     public function store(StoreSongRequest $request, SongServices $service)
     {
-        $request->validated();
-        $res = $service->storeSong(data: $request->sanitizedValues());
-        return $res ? ApiResponse::success(message: 'Song created successfully')
-            : ApiResponse::error(message: 'Failed to create song');
-        // dd($res);
+        try {
+            $res = $service->storeSong(data: $request->sanitizedValues());
+            return ApiResponse::success(data: $res, message: 'Song created successfully');
+        } catch (\Exception $e) {
+            return ApiResponse::error(message: $e->getMessage(), code: $e->getCode());
+        }
     }
 
     /**

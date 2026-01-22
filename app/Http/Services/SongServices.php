@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 use App\Models\Song;
+use Exception;
 
 class SongServices
 {
@@ -11,9 +12,14 @@ class SongServices
      * @param array $data
      * @return void
      */
-    public function storeSong(array $data): Song
+    public function storeSong(array $data): Song | null
     {
-        $res = Song::create(attributes: $data);
+        try {
+            $res = Song::create(attributes: $data);
+        } catch (Exception $e) {
+            throw new Exception(message: $message = $e->getMessage(), code: $e->getCode());
+        }
+
         return $res;
     }
 }
