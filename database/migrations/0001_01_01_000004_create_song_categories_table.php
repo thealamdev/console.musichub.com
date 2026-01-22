@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create(table: 'music_categories', callback: function (Blueprint $table) {
-            $table->id();
+        Schema::create(table: 'song_categories', callback: function (Blueprint $table) {
+            $table->ulid('id')->primary();
             $table->string(column: 'name');
             $table->string(column: 'slug')->unique();
             $table->softDeletes();
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(table: 'music_categories');
+        Schema::dropIfExists(table: 'song_categories');
     }
 };
