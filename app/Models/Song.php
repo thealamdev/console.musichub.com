@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Song extends Model
@@ -15,7 +17,7 @@ class Song extends Model
      * @var string
      */
     protected $table = 'songs';
-    
+
     /**
      * The attributes that are mass assignable.
      */
@@ -27,6 +29,8 @@ class Song extends Model
         'artist',
         'writer',
         'composer',
+        'genre',
+        'answer_id',
         'category_id',
         'album',
         'duration',
@@ -36,4 +40,22 @@ class Song extends Model
         'audio_url',
         'is_published',
     ];
+
+    /**
+     * Get the question associlated with the model
+     * @return BelongsTo<Song, Song>
+     */
+    public function question(): BelongsTo
+    {
+        return $this->belongsTo(related: Song::class, foreignKey: 'answer_id');
+    }
+
+    /**
+     * Get the answer associated with the model.
+     * @return HasMany<Song, Song>
+     */
+    public function answers(): HasMany
+    {
+        return $this->hasMany(related: Song::class, foreignKey: 'answer_id');
+    }
 }

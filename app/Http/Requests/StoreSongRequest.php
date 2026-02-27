@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Enum\GenreEnum;
 
 class StoreSongRequest extends BaseFormRequest
 {
@@ -23,6 +23,7 @@ class StoreSongRequest extends BaseFormRequest
         return [
             'title' => 'required|string|max:255',
             'lyrics' => 'required|string',
+            'genre' => 'required|in:' . implode(separator: ',', array: GenreEnum::values()),
             'category_id' => 'required|exists:song_categories,id',
             'slug' => 'nullable|string|max:255|unique:songs,slug',
             'description' => 'nullable|string',

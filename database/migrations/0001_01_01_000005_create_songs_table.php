@@ -1,5 +1,6 @@
 <?php
 
+use App\Enum\GenreEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,7 +21,9 @@ return new class extends Migration
             $table->string(column: 'artist')->nullable();
             $table->string(column: 'writer')->nullable();
             $table->string(column: 'composer')->nullable();
+            $table->enum(column: 'genre', allowed: GenreEnum::values());
             $table->foreignUlid(column: 'category_id')->constrained(table: 'song_categories')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignUlid(column: 'answer_id')->constrained(table: 'songs');
             $table->string(column: 'album')->nullable();
             $table->integer(column: 'duration')->nullable();
             $table->date(column: 'release_date')->nullable();
@@ -29,7 +32,7 @@ return new class extends Migration
             $table->string(column: 'audio_url')->nullable();
             $table->boolean(column: 'is_published')->default(value: false);
             $table->softDeletes();
-            $table->timestamps(); 
+            $table->timestamps();
         });
     }
 
