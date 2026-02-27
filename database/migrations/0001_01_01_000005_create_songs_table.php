@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string(column: 'audio_url')->nullable();
             $table->boolean(column: 'is_published')->default(value: false);
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestamps(); 
         });
     }
 

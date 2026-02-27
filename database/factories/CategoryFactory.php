@@ -18,29 +18,12 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         $genres = [
-            'Pop',
-            'Rock',
-            'Hip Hop',
-            'Jazz',
-            'Classical',
-            'Electronic',
-            'EDM',
-            'House',
-            'Techno',
-            'Trance',
-            'Blues',
-            'Country',
-            'Folk',
-            'R&B',
-            'Soul',
-            'Reggae',
-            'Metal',
-            'Indie',
-            'Alternative',
-            'K-Pop',
-            'J-Pop',
-            'Bollywood',
-            'Lo-fi'
+            'শরিয়ত',
+            'মারিফত',
+            'গুরু',
+            'শিষ্য',
+            'নবুয়ত',
+            'বেলায়ত',
         ];
 
         $name = $this->faker->unique()->randomElement(array: $genres);
