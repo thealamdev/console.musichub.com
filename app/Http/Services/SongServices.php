@@ -33,7 +33,7 @@ class SongServices
         try {
             $res = Song::create(attributes: $data);
         } catch (Exception $e) {
-            throw new Exception(message: $message = $e->getMessage(), code: $e->getCode());
+            throw new Exception(message: $message = $e->getMessage(), code: $e->getCode() || 400);
         }
 
         return $res;

@@ -24,12 +24,12 @@ class Song extends Model
     protected $fillable = [
         'title',
         'lyrics',
+        'genre',
         'slug',
         'description',
         'artist',
         'writer',
         'composer',
-        'genre',
         'answer_id',
         'category_id',
         'album',

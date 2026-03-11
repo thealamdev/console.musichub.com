@@ -23,7 +23,8 @@ return new class extends Migration
             $table->string(column: 'composer')->nullable();
             $table->enum(column: 'genre', allowed: GenreEnum::values());
             $table->foreignUlid(column: 'category_id')->constrained(table: 'song_categories')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignUlid(column: 'answer_id')->constrained(table: 'songs');
+            $table->ulid(column: 'answer_id')->nullable();
+            $table->foreign(columns: 'answer_id')->references(columns: 'id')->on(table: 'songs')->nullOnDelete();
             $table->string(column: 'album')->nullable();
             $table->integer(column: 'duration')->nullable();
             $table->date(column: 'release_date')->nullable();

@@ -25,6 +25,7 @@ class StoreSongRequest extends BaseFormRequest
             'lyrics' => 'required|string',
             'genre' => 'required|in:' . implode(separator: ',', array: GenreEnum::values()),
             'category_id' => 'required|exists:song_categories,id',
+            'answer_id' => 'nullable',
             'slug' => 'nullable|string|max:255|unique:songs,slug',
             'description' => 'nullable|string',
             'artist' => 'nullable|string|max:255',
@@ -49,6 +50,7 @@ class StoreSongRequest extends BaseFormRequest
         return [
             'title'         => $this->input(key: 'title'),
             'lyrics'        => $this->input(key: 'lyrics'),
+            'genre'         => $this->input(key: 'genre'),
             'category_id'   => $this->input(key: 'category_id'),
             'slug'          => $this->input(key: 'slug'),
             'description'   => $this->input(key: 'description'),
