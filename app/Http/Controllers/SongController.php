@@ -40,7 +40,7 @@ class SongController extends Controller
      * @StoreSongRequest $request
      * @SongService $service
      */
-    public function store(StoreSongRequest $request, SongService $service)
+    public function store(StoreSongRequest $request, SongService $service): JsonResponse
     {
         try {
             $data = StoreSongData::make($request);
@@ -59,10 +59,14 @@ class SongController extends Controller
 
     /**
      * Display the specified resource.
+     * @Song $song
      */
-    public function show(Song $song)
+    public function show(Song $song): JsonResponse
     {
-        //
+        return ApiResponse::success(
+            data: new SongResource($song),
+            message: 'Song retrieved successfully'
+        );
     }
 
     /**
@@ -71,7 +75,7 @@ class SongController extends Controller
      * @SongService $service, 
      * @Song $song
      */
-    public function update(UpdateSongRequest $request, SongService $service, Song $song)
+    public function update(UpdateSongRequest $request, SongService $service, Song $song): JsonResponse
     {
         try {
             $data = UpdateSongData::make($request);
@@ -90,9 +94,24 @@ class SongController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * @Song $song
      */
     public function destroy(Song $song)
     {
-        //
+        try {
+            $response = $song->delete();
+
+            if ($response) {
+                return ApiResponse::success(
+                    data: null,
+                    message: 'Song deleted successfully'
+                );
+            }
+        } catch (\Exception $e) {
+            return ApiResponse::error(
+                message: $e->getMessage(),
+                code: $e->getCode()
+            );
+        }
     }
 }
