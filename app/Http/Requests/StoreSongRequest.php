@@ -39,5 +39,4 @@ class StoreSongRequest extends BaseFormRequest
             'is_published' => 'nullable|boolean',
         ];
     }
-
 }

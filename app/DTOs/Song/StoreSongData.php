@@ -1,10 +1,10 @@
 <?php
 
-namespace App\DTOs;
+namespace App\DTOs\Song;
 
 use App\Http\Requests\StoreSongRequest;
 
-class SongDTO
+class StoreSongData
 {
     public function __construct(
         public string $title = '',
@@ -26,9 +26,9 @@ class SongDTO
     /**
      * Define the request DTO.
      * @param StoreSongRequest $request
-     * @return SongDTO
+     * @return StoreSongData
      */
-    public static function fromRequest(StoreSongRequest $request): self
+    public static function make(StoreSongRequest $request): self
     {
         return new self(
             title: $request->input('title'),

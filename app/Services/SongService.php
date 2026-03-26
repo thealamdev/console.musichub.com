@@ -4,7 +4,9 @@ namespace App\Services;
 
 use App\Actions\Song\ListSongAction;
 use App\Actions\Song\StoreSongAction;
-use App\DTOs\SongDTO;
+use App\Actions\Song\UpdateSongAction;
+use App\DTOs\Song\UpdateSongData;
+use App\DTOs\Song\StoreSongData;
 use App\Models\Song;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -12,7 +14,8 @@ class SongService
 {
     public function __construct(
         protected ListSongAction $listSongAction,
-        protected StoreSongAction $storeSongAction
+        protected StoreSongAction $storeSongAction,
+        protected UpdateSongAction $updateSongAction
     ) {}
 
     /**
@@ -26,11 +29,21 @@ class SongService
 
     /**
      * Store song data
-     * @param SongDTO $data
+     * @param StoreSongData $data
      * @return \App\Models\Song
      */
-    public function store(SongDTO $data): Song
+    public function store(StoreSongData $data): Song
     {
         return $this->storeSongAction->execute($data);
+    }
+
+    /**
+     * Update song data
+     * @param UpdateSongData $data
+     * @return \App\Models\Song
+     */
+    public function update(UpdateSongData $data, Song $song): Song
+    {
+        return $this->updateSongAction->execute($data, $song);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Actions\Song;
 
-use App\DTOs\SongDTO;
+use App\DTOs\Song\StoreSongData;
 use App\Repository\SongRepository;
 
 class StoreSongAction
@@ -13,10 +13,10 @@ class StoreSongAction
 
     /**
      * Execute store StoreSongAction
-     * @param SongDTO $data
+     * @param StoreSongData $data
      * @return \App\Models\Song
      */
-    public function execute(SongDTO $data)
+    public function execute(StoreSongData $data)
     {
         return $this->repo->store($data);
     }

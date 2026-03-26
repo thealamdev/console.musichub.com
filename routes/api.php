@@ -13,15 +13,15 @@ Route::get('/user', function (Request $request) {
 Route::controller(SongController::class)->group(function () {
     Route::get('/songs', 'index');
     Route::post('/song', 'store');
-    Route::get('/song/{id}', 'show');
-    Route::put('/song/{id}', 'update');
-    Route::delete('/song/{id}', 'destroy');
+    Route::get('/song/{song}', 'show');
+    Route::put('/song/{song}', 'update');
+    Route::delete('/song/{song}', 'destroy');
 });
 
 Route::controller(CategoryController::class)->group(function () {
     Route::get('/categories', 'index');
     Route::post('/category', 'store');
-    Route::get('/category/{id}', 'show');
-    Route::put('/category/{id}', 'update');
-    Route::delete('/category/{id}', 'destroy');
+    Route::get('/category/{category}', 'show');
+    Route::put('/category/{category}', 'update');
+    Route::delete('/category/{category}', 'destroy');
 });

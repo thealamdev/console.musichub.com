@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\DTOs\SongDTO;
+use App\DTOs\Song\StoreSongData;
+use App\DTOs\Song\UpdateSongData;
 use App\Helpers\ApiResponse;
 use App\Models\Song;
-use Illuminate\Http\Request;
 use App\Http\Requests\StoreSongRequest;
+use App\Http\Requests\UpdateSongRequest;
 use App\Http\Resources\SongResource;
 use App\Services\SongService;
 use Illuminate\Http\JsonResponse;
@@ -42,7 +43,7 @@ class SongController extends Controller
     public function store(StoreSongRequest $request, SongService $service)
     {
         try {
-            $data = SongDTO::fromRequest($request);
+            $data = StoreSongData::make($request);
             $song = $service->store($data);
             return ApiResponse::success(
                 data: new SongResource($song),
@@ -65,19 +66,26 @@ class SongController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Song $song)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
+     * @UpdateSongRequest $request, 
+     * @SongService $service, 
+     * @Song $song
      */
-    public function update(Request $request, Song $song)
+    public function update(UpdateSongRequest $request, SongService $service, Song $song)
     {
-        //
+        try {
+            $data = UpdateSongData::make($request);
+            $response = $service->update($data, $song);
+            return ApiResponse::success(
+                data: new SongResource($response),
+                message: 'Song Update successfully'
+            );
+        } catch (\Exception $e) {
+            return ApiResponse::error(
+                message: $e->getMessage(),
+                code: $e->getCode()
+            );
+        }
     }
 
     /**
