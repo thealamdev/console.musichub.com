@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\Category;
 
 use App\Repository\CategoryRepository;
 use Illuminate\Database\Eloquent\Collection;

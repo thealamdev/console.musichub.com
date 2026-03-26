@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Song;
 use App\DTOs\Song\StoreSongData;
 use App\DTOs\Song\UpdateSongData;
 use App\Helpers\ApiResponse;
-use App\Models\Song;
 use App\Http\Requests\StoreSongRequest;
 use App\Http\Requests\UpdateSongRequest;
 use App\Http\Resources\SongResource;
@@ -39,6 +39,7 @@ class SongController extends Controller
      * Store a newly created resource in storage.
      * @StoreSongRequest $request
      * @SongService $service
+     * @return JsonResponse
      */
     public function store(StoreSongRequest $request, SongService $service): JsonResponse
     {
@@ -47,12 +48,12 @@ class SongController extends Controller
             $song = $service->store($data);
             return ApiResponse::success(
                 data: new SongResource($song),
-                message: 'Song created successfully'
+                message: 'Song created successfully',
             );
         } catch (\Exception $e) {
             return ApiResponse::error(
                 message: $e->getMessage(),
-                code: $e->getCode()
+                errors: $e
             );
         }
     }

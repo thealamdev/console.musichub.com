@@ -24,7 +24,7 @@ class SongRepository
      * @param StoreSongData $data
      * @return Song
      */
-    public function store(StoreSongData $data)
+    public function store(StoreSongData $data): Song
     {
         return Song::create([
             'title'         => $data->title,
@@ -43,7 +43,6 @@ class SongRepository
             'is_published'  => $data->is_published,
         ]);
     }
-
 
     /**
      * Update the Song functionality

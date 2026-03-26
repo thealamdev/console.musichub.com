@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
+
 class StoreCategoryRequest extends BaseFormRequest
 {
     /**
@@ -9,7 +11,7 @@ class StoreCategoryRequest extends BaseFormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -20,7 +22,7 @@ class StoreCategoryRequest extends BaseFormRequest
     public function rules(): array
     {
         return [
-            //
+            'name'  => ['required', 'string', 'max:30', Rule::unique('song_categories', 'name')],
         ];
     }
 }
