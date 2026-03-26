@@ -2,47 +2,57 @@
 
 namespace App\Http\Controllers;
 
+use App\DTOs\SongDTO;
 use App\Helpers\ApiResponse;
 use App\Models\Song;
 use Illuminate\Http\Request;
-use App\Http\Services\SongServices;
 use App\Http\Requests\StoreSongRequest;
 use App\Http\Resources\SongResource;
+use App\Services\SongService;
 use Illuminate\Http\JsonResponse;
 
 class SongController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * @SongService $service
      */
-    public function index(SongServices $service): JsonResponse
+    public function index(SongService $service): JsonResponse
     {
         try {
-            $res = SongResource::collection(resource: $service->getSongs());
-            return ApiResponse::success(data: $res, message: 'Songs retrieved successfully');
+            $data = $service->getAll();
+            return ApiResponse::success(
+                data: SongResource::collection(resource: $data),
+                message: 'Songs retrieved successfully'
+            );
         } catch (\Exception $e) {
-            return ApiResponse::error(message: $e->getMessage(), code: $e->getCode(), errors: $e);
+            return ApiResponse::error(
+                message: $e->getMessage(),
+                code: $e->getCode(),
+                errors: $e
+            );
         }
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
+     * @StoreSongRequest $request
+     * @SongService $service
      */
-    public function store(StoreSongRequest $request, SongServices $service)
+    public function store(StoreSongRequest $request, SongService $service)
     {
         try {
-            $res = $service->storeSong(data: $request->sanitizedValues());
-            return ApiResponse::success(data: $res, message: 'Song created successfully');
+            $data = SongDTO::fromRequest($request);
+            $song = $service->store($data);
+            return ApiResponse::success(
+                data: new SongResource($song),
+                message: 'Song created successfully'
+            );
         } catch (\Exception $e) {
-            return ApiResponse::error(message: $e->getMessage(), code: $e->getCode());
+            return ApiResponse::error(
+                message: $e->getMessage(),
+                code: $e->getCode()
+            );
         }
     }
 

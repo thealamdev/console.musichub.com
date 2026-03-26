@@ -11,7 +11,7 @@ class CategoryRepository
      * Get all categories
      * @return Collection
      */
-    public function all(): Collection
+    public function getAll(): Collection
     {
         return Category::latest()->get();
     }

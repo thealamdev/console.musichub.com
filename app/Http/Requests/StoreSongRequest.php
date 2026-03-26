@@ -26,7 +26,6 @@ class StoreSongRequest extends BaseFormRequest
             'genre' => 'required|in:' . implode(separator: ',', array: GenreEnum::values()),
             'category_id' => 'required|exists:song_categories,id',
             'answer_id' => 'nullable',
-            'slug' => 'nullable|string|max:255|unique:songs,slug',
             'description' => 'nullable|string',
             'artist' => 'nullable|string|max:255',
             'writer' => 'nullable|string|max:255',
@@ -41,27 +40,4 @@ class StoreSongRequest extends BaseFormRequest
         ];
     }
 
-    /**
-     * Sanetize input values
-     * @return array<string, mixed>
-     */
-    public function sanitizedValues(): array
-    {
-        return [
-            'title'         => $this->input(key: 'title'),
-            'lyrics'        => $this->input(key: 'lyrics'),
-            'genre'         => $this->input(key: 'genre'),
-            'category_id'   => $this->input(key: 'category_id'),
-            'slug'          => $this->input(key: 'slug'),
-            'description'   => $this->input(key: 'description'),
-            'artist'        => $this->input(key: 'artist'),
-            'writer'        => $this->input(key: 'writer'),
-            'composer'      => $this->input(key: 'composer'),
-            'album'         => $this->input(key: 'album'),
-            'duration'      => $this->input(key: 'duration'),
-            'release_date'  => $this->input(key: 'release_date'),
-            'language'      => $this->input(key: 'language'),
-            'is_published'  => $this->input(key: 'is_publishdefault: ed', default: false),
-        ];
-    }
 }

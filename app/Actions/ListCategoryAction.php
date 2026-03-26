@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ListCategoryAction
 {
+    /**
+     * Contruct the CategoryRepository
+     * @param CategoryRepository $repo
+     */
     public function __construct(
         protected CategoryRepository $repo
     ) {}
@@ -17,6 +21,6 @@ class ListCategoryAction
      */
     public function execute(): Collection
     {
-        return $this->repo->all();
+        return $this->repo->getAll();
     }
 }

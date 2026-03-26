@@ -16,8 +16,14 @@ class CategoryController extends Controller
      */
     public function index(CategoryService $service): JsonResponse
     {
-        $resource = $service->all();
+        $resource = $service->getAll();
         $response = CategoryResource::collection($resource);
         return ApiResponse::success($response, 'Category retrieved successfully');
+    }
+
+    
+    public function store()
+    {
+        dd('Hi');
     }
 }
