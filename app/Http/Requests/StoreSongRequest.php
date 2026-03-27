@@ -27,6 +27,7 @@ class StoreSongRequest extends BaseFormRequest
             'category_id' => 'required|exists:song_categories,id',
             'answer_id' => 'nullable',
             'description' => 'nullable|string',
+            'explaination' => 'nullable|string',
             'artist' => 'nullable|string|max:255',
             'writer' => 'nullable|string|max:255',
             'composer' => 'nullable|string|max:255',

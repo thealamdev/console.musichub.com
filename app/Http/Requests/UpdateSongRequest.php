@@ -31,6 +31,7 @@ class UpdateSongRequest extends FormRequest
             'category_id' => ['required', Rule::exists(Category::class, 'id')],
             'answer_id' => 'nullable',
             'description' => 'nullable|string',
+            'explaination' => 'nullable|string',
             'artist' => 'nullable|string|max:255',
             'writer' => 'nullable|string|max:255',
             'composer' => 'nullable|string|max:255',

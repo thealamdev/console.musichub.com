@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text(column: 'lyrics');
             $table->string(column: 'slug')->unique()->nullable();
             $table->text(column: 'description')->nullable();
+            $table->text(column: 'explaination')->nullable();
             $table->string(column: 'artist')->nullable();
             $table->string(column: 'writer')->nullable();
             $table->string(column: 'composer')->nullable();

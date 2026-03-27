@@ -27,6 +27,7 @@ class Song extends Model
         'genre',
         'slug',
         'description',
+        'explaination',
         'artist',
         'writer',
         'composer',
