@@ -12,8 +12,6 @@ use App\Models\Category;
 use App\Services\CategoryService;
 use Illuminate\Http\JsonResponse;
 
-use function Laravel\Prompts\error;
-
 class CategoryController extends Controller
 {
     /**
@@ -79,6 +77,28 @@ class CategoryController extends Controller
                 data: new CategoryResource($response),
                 message: 'Category Update successfully'
             );
+        } catch (\Exception $e) {
+            return ApiResponse::error(
+                message: $e->getMessage(),
+                errors: $e
+            );
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     * @param Category $category
+     */
+    public function destroy(Category $category)
+    {
+        try {
+            $response = $category->delete();
+            if ($response) {
+                return ApiResponse::success(
+                    data: '',
+                    message: 'Category deleted successfully'
+                );
+            }
         } catch (\Exception $e) {
             return ApiResponse::error(
                 message: $e->getMessage(),

@@ -111,7 +111,7 @@ class SongController extends Controller
         } catch (\Exception $e) {
             return ApiResponse::error(
                 message: $e->getMessage(),
-                code: $e->getCode()
+                errors: $e
             );
         }
     }
