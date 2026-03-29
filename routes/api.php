@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SongController;
@@ -10,8 +11,8 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-
 Route::post('/register', RegisterController::class);
+Route::post('/login', LoginController::class);
 
 Route::controller(SongController::class)->group(function () {
     Route::get('/songs', 'index');
