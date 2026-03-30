@@ -36,8 +36,8 @@ class SongRepository
     public function store(StoreSongData $data): Song
     {
         return Song::create([
-            'title'         => Str::words($data->lyrics, 20, ''),
-            'slug'          => Str::slug(Str::words($data->lyrics, 20, '')) . uniqid(),
+            'title'         => Str::words($data->lyrics, 10, ''),
+            'slug'          => Str::slug(Str::words($data->lyrics, 10, '')) . uniqid(),
             'user_id'       => Auth::id(),
             'lyrics'        => $data->lyrics,
             'genre'         => $data->genre,
@@ -57,8 +57,8 @@ class SongRepository
     public function update(UpdateSongData $data, Song $song)
     {
         $song->update([
-            'title'         => Str::words($data->lyrics, 20, ''),
-            'slug'          => $data->lyrics ? Str::slug(Str::words($data->lyrics, 20, '')) . uniqid() : $song->slug,
+            'title'         => Str::words($data->lyrics, 10, ''),
+            'slug'          => $data->lyrics ? Str::slug(Str::words($data->lyrics, 10, '')) . uniqid() : $song->slug,
             'lyrics'        => $data->lyrics,
             'genre'         => $data->genre,
             'explanation'   => $data->explanation,
