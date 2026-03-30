@@ -23,21 +23,7 @@ class SongResource extends JsonResource
             'explanation'   => $this->explanation,
             'writer'        => $this->writer,
             'category'      => $this->category->name,
-            'answers'        => $this->songWithAnswers(),
+            'answer'        => $this->answer,
         ];
-    }
-
-    /**
-     * Get the answer of the song with id and title.
-     * @return array<int, array<string, mixed>>
-     */
-    public function songWithAnswers()
-    {
-        return $this->answers->map(function ($answer) {
-            return [
-                'id' => $answer->id,
-                'title' => $answer->title,
-            ];
-        });
     }
 }

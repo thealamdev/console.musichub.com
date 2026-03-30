@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Song extends Model
@@ -52,20 +51,13 @@ class Song extends Model
     }
 
     /**
-     * Get the question associlated with the model
+     * Get the answer song associated with this song.
+     * A song can be the answer to another song (especially interrogative songs).
+     *
      * @return BelongsTo<Song, Song>
      */
-    public function question(): BelongsTo
+    public function answer(): BelongsTo
     {
-        return $this->belongsTo(related: Song::class, foreignKey: 'answer_id');
-    }
-
-    /**
-     * Get the answer associated with the model.
-     * @return HasMany<Song, Song>
-     */
-    public function answers(): HasMany
-    {
-        return $this->hasMany(related: Song::class, foreignKey: 'answer_id');
+        return $this->belongsTo(Song::class, 'answer_id');
     }
 }
