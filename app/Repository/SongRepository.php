@@ -22,6 +22,7 @@ class SongRepository
             ->latest()
             ->with([
                 'user:id,name,email',
+                'category:id,name',
                 'answer:id,lyrics'
             ])
             ->get();

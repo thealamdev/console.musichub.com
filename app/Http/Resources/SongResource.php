@@ -22,8 +22,35 @@ class SongResource extends JsonResource
             'slug'          => $this->slug,
             'explanation'   => $this->explanation,
             'writer'        => $this->writer,
-            'category'      => $this->category->name,
-            'answer'        => $this->answer,
+            'category'      => $this->category(),
+            'answer'        => $this->answer(),
         ];
+    }
+
+    /**
+     * Get the category associated with the song.
+     * @return array{id: mixed, name: mixed}
+     */
+    public function category()
+    {
+        return [
+            'id' => $this->category->id,
+            'name' => $this->category->name
+        ];
+    }
+
+    /**
+     * Get the answer song associated with this song.
+     * @return array{id: mixed, lyrics: mixed|null} | null
+     */
+    public function answer()
+    {
+        if ($this->answer) {
+            return [
+                'id' => $this->answer->id,
+                'lyrics' => $this->answer->lyrics
+            ];
+        }
+        return null;
     }
 }
