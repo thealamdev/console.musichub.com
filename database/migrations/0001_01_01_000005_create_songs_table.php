@@ -14,25 +14,18 @@ return new class extends Migration
     {
         Schema::create(table: 'songs', callback: function (Blueprint $table) {
             $table->ulid(column: 'id')->primary();
+            $table->foreignUlid(column: 'user_id')->constrained(table: 'users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string(column: 'title');
             $table->text(column: 'lyrics');
             $table->string(column: 'slug')->unique()->nullable();
-            $table->text(column: 'description')->nullable();
-            $table->text(column: 'explaination')->nullable();
-            $table->string(column: 'artist')->nullable();
+            $table->text(column: 'explanation')->nullable();
             $table->string(column: 'writer')->nullable();
-            $table->string(column: 'composer')->nullable();
             $table->enum(column: 'genre', allowed: GenreEnum::values());
             $table->foreignUlid(column: 'category_id')->constrained(table: 'song_categories')->cascadeOnDelete()->cascadeOnUpdate();
             $table->ulid(column: 'answer_id')->nullable();
             $table->foreign(columns: 'answer_id')->references(columns: 'id')->on(table: 'songs')->nullOnDelete();
-            $table->string(column: 'album')->nullable();
-            $table->integer(column: 'duration')->nullable();
-            $table->date(column: 'release_date')->nullable();
-            $table->string(column: 'language')->nullable();
             $table->string(column: 'cover_image')->nullable();
             $table->string(column: 'audio_url')->nullable();
-            $table->boolean(column: 'is_published')->default(value: false);
             $table->softDeletes();
             $table->timestamps();
         });

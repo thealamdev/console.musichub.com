@@ -15,21 +15,29 @@ class SongResource extends JsonResource
     {
         return [
             'id'            => $this->id,
+            'owner'         => $this->user->name,
             'title'         => $this->title,
             'lyrics'        => $this->lyrics,
             'genre'         => $this->genre,
             'slug'          => $this->slug,
-            'description'   => $this->description,
-            'explaination'  => $this->explaination,
-            'artist'        => $this->artist,
+            'explanation'   => $this->explanation,
             'writer'        => $this->writer,
-            'composer'      => $this->composer,
-            'category_id'   => $this->category_id,
-            'answer_id'     => $this->answer_id,
-            'album'         => $this->album,
-            'duration'      => $this->duration,
-            'release_date'  => $this->release_date,
-            'language'      => $this->language,
+            'category'      => $this->category->name,
+            'answers'        => $this->songWithAnswers(),
         ];
+    }
+
+    /**
+     * Get the answer of the song with id and title.
+     * @return array<int, array<string, mixed>>
+     */
+    public function songWithAnswers()
+    {
+        return $this->answers->map(function ($answer) {
+            return [
+                'id' => $answer->id,
+                'title' => $answer->title,
+            ];
+        });
     }
 }

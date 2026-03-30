@@ -6,6 +6,7 @@ use App\DTOs\Song\StoreSongData;
 use App\DTOs\Song\UpdateSongData;
 use App\Models\Song;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class SongRepository
@@ -16,7 +17,14 @@ class SongRepository
      */
     public function getAll(): Collection
     {
-        return Song::latest()->get();
+        return Song::query()
+            ->where('user_id', Auth::id())
+            ->latest()
+            ->with([
+                'user:id,name,email',
+                'answers:id,title,answer_id'
+            ])
+            ->get();
     }
 
     /**
@@ -27,21 +35,15 @@ class SongRepository
     public function store(StoreSongData $data): Song
     {
         return Song::create([
-            'title'         => $data->title,
+            'title'         => Str::words($data->lyrics, 20, ''),
+            'slug'          => Str::slug(Str::words($data->lyrics, 20, '')) . uniqid(),
+            'user_id'       => Auth::id(),
             'lyrics'        => $data->lyrics,
             'genre'         => $data->genre,
-            'slug'          => Str::slug($data->title) . uniqid(),
-            'description'   => $data->description,
-            'explaination'  => $data->explaination,
+            'explanation'   => $data->explanation,
             'category_id'   => $data->category_id,
-            'artist'        => $data->artist,
+            'answer_id'     => $data->answer_id,
             'writer'        => $data->writer,
-            'composer'      => $data->composer,
-            'album'         => $data->album,
-            'duration'      => $data->duration,
-            'release_date'  => $data->release_date,
-            'language'      => $data->language,
-            'is_published'  => $data->is_published,
         ]);
     }
 
@@ -54,20 +56,14 @@ class SongRepository
     public function update(UpdateSongData $data, Song $song)
     {
         $song->update([
-            'title'         => $data->title,
+            'title'         => Str::words($data->lyrics, 20, ''),
+            'slug'          => $data->lyrics ? Str::slug(Str::words($data->lyrics, 20, '')) . uniqid() : $song->slug,
             'lyrics'        => $data->lyrics,
             'genre'         => $data->genre,
-            'description'   => $data->description,
-            'explaination'  => $data->explaination,
+            'explanation'   => $data->explanation,
             'category_id'   => $data->category_id,
-            'artist'        => $data->artist,
-            'writer'        => $data->writer,
-            'composer'      => $data->composer,
-            'album'         => $data->album,
-            'duration'      => $data->duration,
-            'release_date'  => $data->release_date,
-            'language'      => $data->language,
-            'is_published'  => $data->is_published,
+            'answer_id'     => $data->answer_id,
+            'writer'        => $data->writer
         ]);
         return $song;
     }

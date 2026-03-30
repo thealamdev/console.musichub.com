@@ -23,24 +23,33 @@ class Song extends Model
      */
     protected $fillable = [
         'title',
+        'user_id',
         'lyrics',
         'genre',
         'slug',
-        'description',
-        'explaination',
-        'artist',
+        'explanation',
         'writer',
-        'composer',
         'answer_id',
         'category_id',
-        'album',
-        'duration',
-        'release_date',
-        'language',
-        'cover_image',
-        'audio_url',
-        'is_published',
     ];
+
+    /**
+     * Get the user associated with the model.
+     * @return BelongsTo<User, Song>
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(related: User::class, foreignKey: 'user_id');
+    }
+
+    /**
+     * Get the category associated with the model.
+     * @return BelongsTo<Category, Song>
+     */
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(related: Category::class, foreignKey: 'category_id');
+    }
 
     /**
      * Get the question associlated with the model
