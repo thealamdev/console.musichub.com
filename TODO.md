@@ -65,3 +65,4 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
         });
     }
 }
+
