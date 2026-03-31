@@ -2,33 +2,23 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\ServiceProvider;
 use Laravel\Telescope\IncomingEntry;
 use Laravel\Telescope\Telescope;
+use Laravel\Telescope\TelescopeApplicationServiceProvider;
 
-class TelescopeServiceProvider extends ServiceProvider
+class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
 {
     /**
-     * Register services.
+     * Register any application services.
      */
     public function register(): void
     {
-        // Only load Telescope in local environment
-        if (! $this->app->environment('local')) {
-            return;
+        // Telescope::night();
+        if ($this->app->environment('local')) {
+            $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
         }
-
-        $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
-
-        $this->configureTelescope();
-    }
-
-    /**
-     * Configure Telescope settings
-     */
-    protected function configureTelescope(): void
-    {
         $this->hideSensitiveRequestDetails();
 
         $isLocal = $this->app->environment('local');
@@ -44,7 +34,7 @@ class TelescopeServiceProvider extends ServiceProvider
     }
 
     /**
-     * Hide sensitive data from Telescope
+     * Prevent sensitive request details from being logged by Telescope.
      */
     protected function hideSensitiveRequestDetails(): void
     {
@@ -62,12 +52,16 @@ class TelescopeServiceProvider extends ServiceProvider
     }
 
     /**
-     * Gate access for Telescope UI (local only)
+     * Register the Telescope gate.
+     *
+     * This gate determines who can access Telescope in non-local environments.
      */
     protected function gate(): void
     {
-        Gate::define('viewTelescope', function ($user = null) {
-            return $this->app->environment('local');
+        Gate::define('viewTelescope', function (User $user) {
+            return in_array($user->email, [
+                //
+            ]);
         });
     }
 }
