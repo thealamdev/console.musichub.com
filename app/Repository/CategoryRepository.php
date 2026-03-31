@@ -44,7 +44,6 @@ class CategoryRepository
             'name'  => $data->name,
             'slug'  => Str::slug($data->name)
         ]);
-        
         return $category;
     }
 }
