@@ -26,6 +26,3 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::delete('/category/{category}', 'destroy');
     });
 });
-
-
-// ami je tomar
