@@ -3517,18 +3517,6 @@
         },
         {
             "name": "symfony/clock",
-<<<<<<< HEAD
-            "version": "v7.4.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/clock.git",
-                "reference": "674fa3b98e21531dd040e613479f5f6fa8f32111"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/clock/zipball/674fa3b98e21531dd040e613479f5f6fa8f32111",
-                "reference": "674fa3b98e21531dd040e613479f5f6fa8f32111",
-=======
             "version": "v8.0.8",
             "source": {
                 "type": "git",
@@ -3539,7 +3527,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/clock/zipball/b55a638b189a6faa875e0ccdb00908fb87af95b3",
                 "reference": "b55a638b189a6faa875e0ccdb00908fb87af95b3",
->>>>>>> 6b7584e5a90f7711db6a2321a89e336b0c33662e
                 "shasum": ""
             },
             "require": {
@@ -3584,11 +3571,7 @@
                 "time"
             ],
             "support": {
-<<<<<<< HEAD
-                "source": "https://github.com/symfony/clock/tree/v7.4.8"
-=======
                 "source": "https://github.com/symfony/clock/tree/v8.0.8"
->>>>>>> 6b7584e5a90f7711db6a2321a89e336b0c33662e
             },
             "funding": [
                 {
@@ -3608,11 +3591,7 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
-            "time": "2026-03-24T13:12:05+00:00"
-=======
             "time": "2026-03-30T15:14:47+00:00"
->>>>>>> 6b7584e5a90f7711db6a2321a89e336b0c33662e
         },
         {
             "name": "symfony/console",
@@ -3714,18 +3693,6 @@
         },
         {
             "name": "symfony/css-selector",
-<<<<<<< HEAD
-            "version": "v7.4.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/css-selector.git",
-                "reference": "b055f228a4178a1d6774909903905e3475f3eac8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/b055f228a4178a1d6774909903905e3475f3eac8",
-                "reference": "b055f228a4178a1d6774909903905e3475f3eac8",
-=======
             "version": "v8.0.8",
             "source": {
                 "type": "git",
@@ -3736,7 +3703,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/css-selector/zipball/8db1c00226a94d8ab6aa89d9224eeee91e2ea2ed",
                 "reference": "8db1c00226a94d8ab6aa89d9224eeee91e2ea2ed",
->>>>>>> 6b7584e5a90f7711db6a2321a89e336b0c33662e
                 "shasum": ""
             },
             "require": {
@@ -3772,11 +3738,7 @@
             "description": "Converts CSS selectors to XPath expressions",
             "homepage": "https://symfony.com",
             "support": {
-<<<<<<< HEAD
-                "source": "https://github.com/symfony/css-selector/tree/v7.4.8"
-=======
                 "source": "https://github.com/symfony/css-selector/tree/v8.0.8"
->>>>>>> 6b7584e5a90f7711db6a2321a89e336b0c33662e
             },
             "funding": [
                 {
@@ -3796,11 +3758,7 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
-            "time": "2026-03-24T13:12:05+00:00"
-=======
             "time": "2026-03-30T15:14:47+00:00"
->>>>>>> 6b7584e5a90f7711db6a2321a89e336b0c33662e
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -3953,18 +3911,6 @@
         },
         {
             "name": "symfony/event-dispatcher",
-<<<<<<< HEAD
-            "version": "v7.4.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "f57b899fa736fd71121168ef268f23c206083f0a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/f57b899fa736fd71121168ef268f23c206083f0a",
-                "reference": "f57b899fa736fd71121168ef268f23c206083f0a",
-=======
             "version": "v8.0.8",
             "source": {
                 "type": "git",
@@ -3975,7 +3921,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/f662acc6ab22a3d6d716dcb44c381c6002940df6",
                 "reference": "f662acc6ab22a3d6d716dcb44c381c6002940df6",
->>>>>>> 6b7584e5a90f7711db6a2321a89e336b0c33662e
                 "shasum": ""
             },
             "require": {
@@ -4027,11 +3972,7 @@
             "description": "Provides tools that allow your application components to communicate with each other by dispatching events and listening to them",
             "homepage": "https://symfony.com",
             "support": {
-<<<<<<< HEAD
-                "source": "https://github.com/symfony/event-dispatcher/tree/v7.4.8"
-=======
                 "source": "https://github.com/symfony/event-dispatcher/tree/v8.0.8"
->>>>>>> 6b7584e5a90f7711db6a2321a89e336b0c33662e
             },
             "funding": [
                 {
@@ -4051,11 +3992,7 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
-            "time": "2026-03-30T13:54:39+00:00"
-=======
             "time": "2026-03-30T15:14:47+00:00"
->>>>>>> 6b7584e5a90f7711db6a2321a89e336b0c33662e
         },
         {
             "name": "symfony/event-dispatcher-contracts",
@@ -5643,18 +5580,6 @@
         },
         {
             "name": "symfony/string",
-<<<<<<< HEAD
-            "version": "v7.4.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/string.git",
-                "reference": "114ac57257d75df748eda23dd003878080b8e688"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/114ac57257d75df748eda23dd003878080b8e688",
-                "reference": "114ac57257d75df748eda23dd003878080b8e688",
-=======
             "version": "v8.0.8",
             "source": {
                 "type": "git",
@@ -5665,7 +5590,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/string/zipball/ae9488f874d7603f9d2dfbf120203882b645d963",
                 "reference": "ae9488f874d7603f9d2dfbf120203882b645d963",
->>>>>>> 6b7584e5a90f7711db6a2321a89e336b0c33662e
                 "shasum": ""
             },
             "require": {
@@ -5723,11 +5647,7 @@
                 "utf8"
             ],
             "support": {
-<<<<<<< HEAD
-                "source": "https://github.com/symfony/string/tree/v7.4.8"
-=======
                 "source": "https://github.com/symfony/string/tree/v8.0.8"
->>>>>>> 6b7584e5a90f7711db6a2321a89e336b0c33662e
             },
             "funding": [
                 {
@@ -5747,22 +5667,6 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
-            "time": "2026-03-24T13:12:05+00:00"
-        },
-        {
-            "name": "symfony/translation",
-            "version": "v7.4.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/translation.git",
-                "reference": "33600f8489485425bfcddd0d983391038d3422e7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/33600f8489485425bfcddd0d983391038d3422e7",
-                "reference": "33600f8489485425bfcddd0d983391038d3422e7",
-=======
             "time": "2026-03-30T15:14:47+00:00"
         },
         {
@@ -5777,7 +5681,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/translation/zipball/27c03ae3940de24ba2f71cfdbac824f2aa1fdf2f",
                 "reference": "27c03ae3940de24ba2f71cfdbac824f2aa1fdf2f",
->>>>>>> 6b7584e5a90f7711db6a2321a89e336b0c33662e
                 "shasum": ""
             },
             "require": {
@@ -5844,11 +5747,7 @@
             "description": "Provides tools to internationalize your application",
             "homepage": "https://symfony.com",
             "support": {
-<<<<<<< HEAD
-                "source": "https://github.com/symfony/translation/tree/v7.4.8"
-=======
                 "source": "https://github.com/symfony/translation/tree/v8.0.8"
->>>>>>> 6b7584e5a90f7711db6a2321a89e336b0c33662e
             },
             "funding": [
                 {
@@ -5868,11 +5767,7 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
-            "time": "2026-03-24T13:12:05+00:00"
-=======
             "time": "2026-03-30T15:14:47+00:00"
->>>>>>> 6b7584e5a90f7711db6a2321a89e336b0c33662e
         },
         {
             "name": "symfony/translation-contracts",
@@ -8711,18 +8606,6 @@
         },
         {
             "name": "symfony/yaml",
-<<<<<<< HEAD
-            "version": "v7.4.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/yaml.git",
-                "reference": "c58fdf7b3d6c2995368264c49e4e8b05bcff2883"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/c58fdf7b3d6c2995368264c49e4e8b05bcff2883",
-                "reference": "c58fdf7b3d6c2995368264c49e4e8b05bcff2883",
-=======
             "version": "v8.0.8",
             "source": {
                 "type": "git",
@@ -8733,7 +8616,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/yaml/zipball/54174ab48c0c0f9e21512b304be17f8150ccf8f1",
                 "reference": "54174ab48c0c0f9e21512b304be17f8150ccf8f1",
->>>>>>> 6b7584e5a90f7711db6a2321a89e336b0c33662e
                 "shasum": ""
             },
             "require": {
@@ -8776,11 +8658,7 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
-<<<<<<< HEAD
-                "source": "https://github.com/symfony/yaml/tree/v7.4.8"
-=======
                 "source": "https://github.com/symfony/yaml/tree/v8.0.8"
->>>>>>> 6b7584e5a90f7711db6a2321a89e336b0c33662e
             },
             "funding": [
                 {
@@ -8800,11 +8678,7 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
-            "time": "2026-03-24T13:12:05+00:00"
-=======
             "time": "2026-03-30T15:14:47+00:00"
->>>>>>> 6b7584e5a90f7711db6a2321a89e336b0c33662e
         },
         {
             "name": "theseer/tokenizer",
