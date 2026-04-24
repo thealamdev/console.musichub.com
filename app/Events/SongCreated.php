@@ -18,10 +18,10 @@ class SongCreated implements ShouldBroadcast
 
     public function __construct(Song $song)
     {
-        Log::info('SongCreated Event Fired', [
-            'song_id' => $song->id,
-            'title' => $song->title
-        ]);
+        // Log::info('SongCreated Event Fired', [
+        //     'song_id' => $song->id,
+        //     'title' => $song->title
+        // ]);
         $this->song = $song;
     }
 
