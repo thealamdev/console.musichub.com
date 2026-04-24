@@ -22,6 +22,7 @@ class SongCreated implements ShouldBroadcast
             'song_id' => $song->id,
             'title' => $song->title
         ]);
+        
         $this->song = $song;
     }
 
