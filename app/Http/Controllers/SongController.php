@@ -83,6 +83,7 @@ class SongController extends Controller
         try {
             $data = UpdateSongData::make($request);
             $response = $service->update($data, $song);
+            event(new SongCreated($song));
             return ApiResponse::success(
                 data: new SongResource($response),
                 message: 'Song Update successfully'
@@ -103,7 +104,7 @@ class SongController extends Controller
     {
         try {
             $response = $song->delete();
-
+            event(new SongCreated($song));
             if ($response) {
                 return ApiResponse::success(
                     data: null,
