@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Song;
 use App\DTOs\Song\StoreSongData;
 use App\DTOs\Song\UpdateSongData;
+use App\Events\SongCreated;
 use App\Helpers\ApiResponse;
 use App\Http\Requests\StoreSongRequest;
 use App\Http\Requests\UpdateSongRequest;
@@ -46,6 +47,7 @@ class SongController extends Controller
         try {
             $data = StoreSongData::make($request);
             $song = $service->store($data);
+            event(new SongCreated($song));
             return ApiResponse::success(
                 data: new SongResource($song),
                 message: 'Song created successfully',
