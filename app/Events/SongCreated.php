@@ -14,9 +14,7 @@ class SongCreated implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $song;
-
-    public function __construct(Song $song)
+    public function __construct(public Song $song)
     {
         Log::info('SongCreated Event Fired', [
             'song_id' => $song->id,
