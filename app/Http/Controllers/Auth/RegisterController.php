@@ -27,7 +27,10 @@ class RegisterController
                 message: 'User registered successfully',
             );
         } catch (\Exception $e) {
-            dd($e->getMessage());
+            return ApiResponse::error(
+                message: $e->getMessage(),
+                errors: $e
+            );
         }
     }
 }
